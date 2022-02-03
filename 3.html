@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/64EA9610-834A-7D4E-9320-D304E096F358/main.js" charset="UTF-8"></script></head>
+<body>
+<!--
+Обязательное задание.
+
+Дан массив products, необходимо цену каждого продукта уменьшить на 15% используя
+метод forEach.
+-->
+<script>
+  "use strict";
+
+  const products = [
+    {
+      id: 3,
+      price: 200,
+    },
+    {
+      id: 4,
+      price: 900,
+    },
+    {
+      id: 1,
+      price: 1000,
+    },
+  ];
+
+  products.forEach(element => {
+    element.price *= 0.85;
+  })
+  console.log(products);
+</script>
+</body>
+</html>
