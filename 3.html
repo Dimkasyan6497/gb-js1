@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+  <style>
+    i {
+      font-size: 50px;
+    }
+    .golden {
+      color: gold;
+    }
+  </style>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/64EA9610-834A-7D4E-9320-D304E096F358/main.js" charset="UTF-8"></script></head>
+<body>
+<!--
+Обязательное задание.
+
+Выполнить все задачи в теге script. Комментарии, в которых написаны задачи, не
+стирать, код с решением задачи пишем под комментарием.
+-->
+
+<div class="stars_container">
+  <i class="fas fa-star"></i>
+  <i class="fas fa-star"></i>
+  <i class="fas fa-star"></i>
+  <i class="fas fa-star"></i>
+  <i class="fas fa-star"></i>
+</div>
+
+<script>
+  "use strict";
+
+  /*
+  1. При наведении на любую из звезд, данной звезде должен ставиться класс
+  golden, также такой класс должен ставиться всем звездам до нее слева.
+  */
+  const starsContainer = document.querySelector('div'),
+        starsCollection = document.querySelectorAll('i')
+
+  function getStarsCollectionIdx(el) {
+    for (let i = 0; i < starsCollection.length; i++) {
+      if (el === starsCollection[i]) return i;
+    };
+  }
+
+  function setClassGolden(event) {
+    const id = getStarsCollectionIdx(event.target);
+    for (let i = 0; i <= id; i++) {
+      starsCollection[i].classList.add('golden');
+    }
+  }
+
+  starsContainer.addEventListener('mouseover', setClassGolden);
+
+  /*
+  2. Когда мы уводим курсор мыши от звезды, все поставленные классы из первого
+  задания должны быть удалены.
+  */
+  function removeClassGolden(event) {
+    const id = getStarsCollectionIdx(event.target);
+    for (let i = 0; i <= id; i++) {
+      starsCollection[i].classList.remove('golden');
+    }
+  }
+  starsContainer.addEventListener('mouseout', removeClassGolden);
+
+  /*
+  3. Когда мы переводим мышь от одной звезды к другой, у нас могут мигать
+  звезды (временно могут становиться черными). Почему так? Напишите словами.
+  Можем ли мы это исправить? Если да, то предложите решение.
+  */
+
+  // Между элементами есть текстовый узел, в котором есть символ переноса каретки, а так как элемент i является инлайновым(inline-block если посмотреть в отладчике), то этот символ каретки будет иметь размер. Как вариант назначить конейнеру line-height и font-size равными нулю. Другой вариант назначить контейнеру display:flex, а элементам display:block. Еще вариант поставить задержку срабатывания события в каких-нибудь 200мс...Вроде того...Но чтот не очень вышло и наверное это не самое лучшее и правильное решение) 
+  // function removeClassGolden1(id) {
+    
+  //   for (let i = 0; i <= id; i++) {
+  //     starsCollection[i].classList.remove('golden');
+  //   }
+  // }
+  // function removeClassGolden(event) {
+  //   const id = getStarsCollectionIdx(event.target);
+  //   setTimeout(removeClassGolden1, 200, id);
+    
+  // }
+  // starsContainer.addEventListener('mouseout', removeClassGolden);
+
+</script>
+</body>
+</html>
